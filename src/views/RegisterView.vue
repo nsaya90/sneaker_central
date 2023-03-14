@@ -2,84 +2,99 @@
   <NavBar></NavBar>
 
   <div class="container-fluid">
-    <p>
+    <p class="text-register">
       N'hésitez plus et rejoignez notre communauté de passionnés de sneakers
       pour trouver la paire parfaite ou vendre celle que vous ne portez plus.
     </p>
-    <form class="box_register" action="" @submit.prevent>
-      <div class="form-floating mb-3">
-        <input
-          type="text"
-          class="form-control"
-          id="inputFirstname"
-          placeholder="Nom"
-          v-model="firstname"
-        />
-        <label for="inputFirstname">Nom</label>
-        <p
-          class="errors"
-          v-if="this.errors.firstname"
-          v-text="errors.firstname[0]"
-        ></p>
+    <div class="d-flex justify-content-center">
+      <div class="box-register">
+        <form class="form_register" action="" @submit.prevent>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="inputFirstname"
+              placeholder="Nom"
+              v-model="firstname"
+            />
+            <label for="inputFirstname">Nom</label>
+            <p
+              class="errors"
+              v-if="this.errors.firstname"
+              v-text="errors.firstname[0]"
+            ></p>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="inputLastName"
+              placeholder="Prénom"
+              v-model="lastname"
+            />
+            <label for="inputLastName">Prénom</label>
+            <p
+              class="errors"
+              v-if="this.errors.lastname"
+              v-text="errors.lastname[0]"
+            ></p>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="text"
+              class="form-control"
+              id="inputPhone"
+              placeholder="Numéro de téléphone"
+              v-model="phone"
+            />
+            <label for="inputPhone">Numéro de téléphone</label>
+            <p
+              class="errors"
+              v-if="this.errors.phone"
+              v-text="errors.phone[0]"
+            ></p>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="email"
+              class="form-control"
+              id="inputEmail"
+              placeholder="Email"
+              v-model="email"
+            />
+            <label for="inputEmail">Email</label>
+            <p class="errors" v-if="this.errorMail" v-text="errorMail"></p>
+            <p
+              class="errors"
+              v-if="this.errors.email"
+              v-text="errors.email[0]"
+            ></p>
+          </div>
+          <div class="form-floating mb-3">
+            <input
+              type="password"
+              class="form-control"
+              id="inputPassword"
+              placeholder="password"
+              v-model="password"
+            />
+            <label for="inputPassword">Mot de passe</label>
+            <p
+              class="errors"
+              v-if="this.errors.password"
+              v-text="errors.password[0]"
+            ></p>
+          </div>
+          <button class="button-23" @click="register" type="button">
+            S'inscrire
+          </button>
+        </form>
       </div>
-      <div class="form-floating mb-3">
-        <input
-          type="text"
-          class="form-control"
-          id="inputLastName"
-          placeholder="Prénom"
-          v-model="lastname"
-        />
-        <label for="inputLastName">Prénom</label>
-        <p
-          class="errors"
-          v-if="this.errors.lastname"
-          v-text="errors.lastname[0]"
-        ></p>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          type="text"
-          class="form-control"
-          id="inputPhone"
-          placeholder="Numéro de téléphone"
-          v-model="phone"
-        />
-        <label for="inputPhone">Numéro de téléphone</label>
-        <p class="errors" v-if="this.errors.phone" v-text="errors.phone[0]"></p>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          type="email"
-          class="form-control"
-          id="inputEmail"
-          placeholder="Email"
-          v-model="email"
-        />
-        <label for="inputEmail">Email</label>
-        <p class="errors" v-if="this.errorMail" v-text="errorMail"></p>
-        <p class="errors" v-if="this.errors.email" v-text="errors.email[0]"></p>
-      </div>
-      <div class="form-floating mb-3">
-        <input
-          type="password"
-          class="form-control"
-          id="inputPassword"
-          placeholder="password"
-          v-model="password"
-        />
-        <label for="inputPassword">Mot de passe</label>
-        <p
-          class="errors"
-          v-if="this.errors.password"
-          v-text="errors.password[0]"
-        ></p>
-      </div>
-    </form>
-    <div class="box-button-register">
-      <button class="button-23" @click="register" type="button">
-        Inscription
-      </button>
+    </div>
+    <div class="box-register-login">
+      <p class="text-register">
+        Déjà inscrit ? <router-link to="/login">Se connecter</router-link>
+      </p>
     </div>
   </div>
 </template>
@@ -134,18 +149,39 @@ export default {
 };
 </script>
 <style scoped>
+.box-register-login {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 25px;
+}
+
+.box-register-login button {
+  width: 60%;
+}
+.text-register {
+  text-align: center;
+}
+
 form p {
   color: red;
 }
 
-.box-button-register {
+.box-register {
+  width: 100%;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
+}
+.form_register {
+  width: 60%;
 }
 .button-23 {
   background-color: #ffffff;
-  border: 4px solid #ee964b;
+  border: 4px solid black;
   border-radius: 8px;
   box-sizing: border-box;
   color: #222222;
@@ -156,10 +192,10 @@ form p {
   font-size: 16px;
   font-weight: 600;
   line-height: 20px;
+  height: 50px;
   margin: 0;
   outline: none;
-  padding: 13px 23px;
-  position: relative;
+
   text-align: center;
   text-decoration: none;
   touch-action: manipulation;
@@ -167,7 +203,7 @@ form p {
     transform 0.1s;
   user-select: none;
   -webkit-user-select: none;
-  width: auto;
+  width: 100%;
 }
 
 .button-23:focus-visible {

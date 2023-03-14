@@ -1,7 +1,7 @@
 <template lang="">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <nav class="navbar">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">Sneaker Central</a>
+      <router-link to="/"><div class="box-logo"></div> </router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/register">Compte</a>
+            <router-link class="nav-link" to="/register">Compte</router-link>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Message</a>
@@ -34,4 +34,13 @@ export default {
   name: "NavBar",
 };
 </script>
-<style lang=""></style>
+<style scoped>
+.box-logo {
+  background-image: url(../assets/logo.png);
+  height: 100px;
+  width: 200px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+</style>
